@@ -1,18 +1,17 @@
-package com.ulucasfraga.page.device.common;
+package com.ulucasfraga.page.common;
 
 import com.ulucasfraga.driver.DriverManager;
-import com.ulucasfraga.page.device.AbstractPageObject;
+import com.ulucasfraga.page.AbstractPageObject;
 import io.github.sukgu.Shadow;
 import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CommonPage extends AbstractPageObject {
+public class UtilsPage extends AbstractPageObject {
 
   private static final int DEFAULT_TIME_WAIT = 10;
   Shadow shadow = new Shadow(DriverManager.getDriver());
@@ -40,10 +39,10 @@ public class CommonPage extends AbstractPageObject {
         .until(ExpectedConditions.presenceOfAllElementsLocatedBy(element));
   }
 
-  protected void isVisible(WebElement element) {
+  protected Boolean isVisible(WebElement element) {
     new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(DEFAULT_TIME_WAIT))
         .until(ExpectedConditions.visibilityOf(element));
-    element.isDisplayed();
+    return element.isDisplayed();
   }
 
   protected void isVisibleBy(By locator) {
@@ -51,8 +50,8 @@ public class CommonPage extends AbstractPageObject {
         .until(ExpectedConditions.visibilityOfElementLocated(locator));
   }
 
-  protected void isNotVisible(WebElement element) {
-    new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(DEFAULT_TIME_WAIT))
+  protected Boolean isNotVisible(WebElement element) {
+    return new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(DEFAULT_TIME_WAIT))
         .until(ExpectedConditions.invisibilityOf(element));
   }
 

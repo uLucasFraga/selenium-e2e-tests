@@ -1,14 +1,12 @@
 package com.ulucasfraga.data.dynamic;
 
-import com.ulucasfraga.enums.RoomType;
+import static com.ulucasfraga.config.ConfigurationManager.configuration;
+
 import com.ulucasfraga.model.DeviceProtection;
+import java.util.Locale;
 import net.datafaker.Faker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.Locale;
-
-import static com.ulucasfraga.config.ConfigurationManager.configuration;
 
 public final class DeviceProtectionDataFactory {
 
@@ -21,6 +19,7 @@ public final class DeviceProtectionDataFactory {
     var deviceProtection =
         new DeviceProtection.DeviceProtectionBuilder()
             .devicePrice(returnRandomDevicePurchasePrice())
+            .imei(faker.code().imei())
             .build();
 
     logger.info(deviceProtection);

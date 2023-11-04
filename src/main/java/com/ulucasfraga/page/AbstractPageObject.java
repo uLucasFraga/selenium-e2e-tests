@@ -1,4 +1,4 @@
-package com.ulucasfraga.page.device;
+package com.ulucasfraga.page;
 
 import static com.ulucasfraga.config.ConfigurationManager.configuration;
 import static org.openqa.selenium.support.PageFactory.initElements;

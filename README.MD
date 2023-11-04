@@ -101,7 +101,7 @@ mvn allure:serve
 
 ## Support
 
-- LinkedIn at <a href="https://www.linkedin.com/in/ulucasfraga" target="_blank">`Lucas Fraga`</a>
+- LinkedIn at <a href="https://www.linkedin.com/in/ulucasfraga" target="_blank">Lucas Fraga</a>
 - E-mail: <ulucasfraga@gmail.com>
 
 ---
