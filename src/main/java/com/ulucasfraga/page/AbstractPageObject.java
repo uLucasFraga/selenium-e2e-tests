@@ -1,10 +1,10 @@
-package com.ulucasfraga.page.device;
-
-import com.ulucasfraga.driver.DriverManager;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+package com.ulucasfraga.page;
 
 import static com.ulucasfraga.config.ConfigurationManager.configuration;
 import static org.openqa.selenium.support.PageFactory.initElements;
+
+import com.ulucasfraga.driver.DriverManager;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class AbstractPageObject {
 
