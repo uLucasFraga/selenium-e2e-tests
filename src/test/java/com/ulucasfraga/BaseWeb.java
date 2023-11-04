@@ -1,5 +1,7 @@
 package com.ulucasfraga;
 
+import static com.ulucasfraga.config.ConfigurationManager.configuration;
+
 import com.ulucasfraga.driver.DriverManager;
 import com.ulucasfraga.driver.TargetFactory;
 import com.ulucasfraga.report.AllureManager;
@@ -10,8 +12,6 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-
-import static com.ulucasfraga.config.ConfigurationManager.configuration;
 
 @Listeners({TestListener.class})
 public abstract class BaseWeb {
@@ -28,7 +28,8 @@ public abstract class BaseWeb {
     WebDriver driver = new TargetFactory().createInstance(browser);
     DriverManager.setDriver(driver);
 
-    DriverManager.getDriver().get(configuration().url() + "/en/ascend/device-protection?utm_source=ascend");
+    DriverManager.getDriver()
+        .get(configuration().url() + "/en/ascend/device-protection?utm_source=ascend");
   }
 
   @AfterMethod(alwaysRun = true)

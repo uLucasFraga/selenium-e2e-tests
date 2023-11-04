@@ -1,7 +1,13 @@
 package com.ulucasfraga.driver;
 
+import static com.ulucasfraga.config.ConfigurationManager.configuration;
+import static com.ulucasfraga.data.changeless.BrowserData.*;
+import static java.lang.Boolean.TRUE;
+
 import com.ulucasfraga.exceptions.HeadlessNotSupportedException;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import java.util.HashMap;
+import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,10 +20,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 import org.testcontainers.containers.BrowserWebDriverContainer;
-
-import static com.ulucasfraga.config.ConfigurationManager.configuration;
-import static com.ulucasfraga.data.changeless.BrowserData.*;
-import static java.lang.Boolean.TRUE;
 
 public enum BrowserFactory {
   CHROME {
@@ -40,6 +42,9 @@ public enum BrowserFactory {
     @Override
     public ChromeOptions getOptions() {
       var chromeOptions = new ChromeOptions();
+      Map<String, String> mobileEmulation = new HashMap<>();
+      mobileEmulation.put("deviceName", "Nexus 5");
+      chromeOptions.setExperimentalOption(MOBILE_EMULATION, mobileEmulation);
       chromeOptions.addArguments(START_MAXIMIZED);
       chromeOptions.addArguments(DISABLE_INFOBARS);
       chromeOptions.addArguments(DISABLE_NOTIFICATIONS);
