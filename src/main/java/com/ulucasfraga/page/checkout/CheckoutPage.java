@@ -32,6 +32,7 @@ public class CheckoutPage extends UtilsPage {
   @Step
   public String getProductNameCheckout() {
     waitElement(this.productNameCheckoutPage);
+    isClickable(this.productNameCheckoutPage);
     return getTextFromLabel(this.productNameCheckoutPage);
   }
 
