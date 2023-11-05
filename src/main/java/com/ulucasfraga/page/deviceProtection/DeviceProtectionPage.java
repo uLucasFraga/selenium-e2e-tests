@@ -22,6 +22,9 @@ public class DeviceProtectionPage extends UtilsPage {
   @FindElementBy(css = "button[id='onetrust-accept-btn-handler']")
   private WebElement acceptCookiesButton;
 
+  @FindElementBy(css = "p[class='h0 banner-title']")
+  private WebElement bannerTitleDeviceProtectionPage;
+
   @FindElementBy(css = "span[id='selected']")
   private WebElement selectDevicePriceOptionProtectionPage;
 
@@ -43,6 +46,7 @@ public class DeviceProtectionPage extends UtilsPage {
   @Step
   public void confirmYourDevicePriceProtection() {
     acceptCookies(this.acceptCookiesButton);
+    isElementAttachedToHtml(this.bannerTitleDeviceProtectionPage);
     click(this.selectDevicePriceOptionProtectionPage);
     isClickable(this.selectButtonDeviceProtectionPage);
   }
@@ -55,34 +59,36 @@ public class DeviceProtectionPage extends UtilsPage {
 
   @Step
   public void selectDeviceProtectionButton() {
+    waitElement(this.selectButtonDeviceProtectionPage);
     isElementAttachedToHtml(this.selectButtonDeviceProtectionPage);
     click(this.selectButtonDeviceProtectionPage);
   }
 
   @Step
   public String getDevicePriceProtection() {
-    isVisible(this.devicePlanPriceCounterProtectionPage);
     waitElement(this.selectDevicePriceOptionProtectionPage);
+    isElementAttachedToHtml(this.devicePlanPriceCounterProtectionPage);
     return getTextFromLabel(this.selectDevicePriceOptionProtectionPage);
   }
 
   @Step
   public String getDevicePlanPriceProtectionPage() {
-    isVisible(this.devicePlanPriceCounterProtectionPage);
     waitElement(this.devicePlanPriceProtectionPage);
+    isElementAttachedToHtml(this.devicePlanPriceCounterProtectionPage);
     return getTextFromLabel(this.devicePlanPriceProtectionPage);
   }
 
   @Step
   public String getProductNameDeviceProtection() {
-    isVisible(this.devicePlanPriceCounterProtectionPage);
     waitElement(this.productNameDeviceProtectionPage);
+    isElementAttachedToHtml(this.productNameDeviceProtectionPage);
     return getTextFromLabel(this.productNameDeviceProtectionPage);
   }
 
   @Step
   public Boolean checkContentAndURLDeviceProtection() {
     waitElement(this.productSummaryDeviceProtectionPage);
+    isElementAttachedToHtml(this.productSummaryDeviceProtectionPage);
     return isUrlContainsValue("/device-protection/checkout/payment");
   }
 
