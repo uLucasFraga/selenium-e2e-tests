@@ -50,16 +50,19 @@ public class DeviceProtectionPage extends UtilsPage {
   }
 
   @Step
-  public void confirmYourDevicePriceProtection() {
+  public void confirmYourDevicePriceProtection(String devicePrice) {
     isVisible(this.selectDevicePriceOptionProtectionPage);
     click(this.selectDevicePriceOptionProtectionPage);
+    selectDevicePriceProtection(devicePrice);
     isClickable(this.selectButtonDeviceProtectionPage);
   }
 
   @Step
   public void selectDevicePriceProtection(String devicePrice) {
+    isClickable(this.selectButtonDeviceProtectionPage);
     clickElementListByText(devicePrice);
     isClickable(this.selectButtonDeviceProtectionPage);
+    isVisible(this.selectButtonDeviceProtectionPage);
   }
 
   @Step
@@ -67,6 +70,7 @@ public class DeviceProtectionPage extends UtilsPage {
     waitElement(this.selectButtonDeviceProtectionPage);
     isVisible(this.selectButtonDeviceProtectionPage);
     click(this.selectButtonDeviceProtectionPage);
+    isUrlContainsValue("/checkout");
   }
 
   @Step

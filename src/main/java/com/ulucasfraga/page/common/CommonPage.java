@@ -39,7 +39,7 @@ public class CommonPage extends UtilsPage {
 
   @Step
   public String getAlertMessage() {
-    waitElement(this.unableAlertMessage);
+    isVisible(this.unableAlertMessage);
     return getTextFromLabel(this.unableAlertMessage);
   }
 }

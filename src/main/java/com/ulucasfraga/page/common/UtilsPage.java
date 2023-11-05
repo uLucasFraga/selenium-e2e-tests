@@ -165,7 +165,7 @@ public class UtilsPage extends AbstractPageObject {
   }
 
   protected String getTextFromLabel(WebElement element) {
-    isClickable(element);
+    isVisible(element);
     return element.getText().trim();
   }
 
