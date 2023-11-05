@@ -45,54 +45,59 @@ public class DeviceProtectionPage extends UtilsPage {
 
   @Step
   public void acceptCookiesDeviceProtection() {
+    waitElement(this.acceptCookiesButton);
     acceptCookies(this.acceptCookiesButton);
   }
 
   @Step
-  public void confirmYourDevicePriceProtection() {
-    isElementAttachedToHtml(this.bannerTitleDeviceProtectionPage);
+  public void confirmYourDevicePriceProtection(String devicePrice) {
+    isVisible(this.selectDevicePriceOptionProtectionPage);
     click(this.selectDevicePriceOptionProtectionPage);
+    selectDevicePriceProtection(devicePrice);
     isClickable(this.selectButtonDeviceProtectionPage);
   }
 
   @Step
   public void selectDevicePriceProtection(String devicePrice) {
+    isClickable(this.selectButtonDeviceProtectionPage);
     clickElementListByText(devicePrice);
     isClickable(this.selectButtonDeviceProtectionPage);
+    isVisible(this.selectButtonDeviceProtectionPage);
   }
 
   @Step
   public void selectDeviceProtectionButton() {
     waitElement(this.selectButtonDeviceProtectionPage);
-    isElementAttachedToHtml(this.selectButtonDeviceProtectionPage);
+    isVisible(this.selectButtonDeviceProtectionPage);
     click(this.selectButtonDeviceProtectionPage);
+    isUrlContainsValue("/checkout");
   }
 
   @Step
   public String getDevicePriceProtection() {
     waitElement(this.selectDevicePriceOptionProtectionPage);
-    isElementAttachedToHtml(this.devicePlanPriceCounterProtectionPage);
+    isVisible(this.selectDevicePriceOptionProtectionPage);
     return getTextFromLabel(this.selectDevicePriceOptionProtectionPage);
   }
 
   @Step
   public String getDevicePlanPriceProtectionPage() {
     waitElement(this.devicePlanPriceProtectionPage);
-    isElementAttachedToHtml(this.devicePlanPriceCounterProtectionPage);
+    isVisible(this.devicePlanPriceProtectionPage);
     return getTextFromLabel(this.devicePlanPriceProtectionPage);
   }
 
   @Step
   public String getProductNameDeviceProtection() {
     waitElement(this.productNameDeviceProtectionPage);
-    isElementAttachedToHtml(this.productNameDeviceProtectionPage);
+    isVisible(this.productNameDeviceProtectionPage);
     return getTextFromLabel(this.productNameDeviceProtectionPage);
   }
 
   @Step
   public Boolean checkContentAndURLDeviceProtection() {
     waitElement(this.productSummaryDeviceProtectionPage);
-    isElementAttachedToHtml(this.productSummaryDeviceProtectionPage);
+    isVisible(this.productSummaryDeviceProtectionPage);
     return isUrlContainsValue("/device-protection/checkout/payment");
   }
 
