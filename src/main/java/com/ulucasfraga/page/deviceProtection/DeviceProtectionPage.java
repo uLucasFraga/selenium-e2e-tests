@@ -45,7 +45,6 @@ public class DeviceProtectionPage extends UtilsPage {
 
   @Step
   public void acceptCookiesDeviceProtection() {
-    isElementAttachedToHtml(this.bannerTitleDeviceProtectionPage);
     acceptCookies(this.acceptCookiesButton);
   }
 
