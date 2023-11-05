@@ -116,13 +116,6 @@ public class UtilsPage extends AbstractPageObject {
     element.isDisplayed();
   }
 
-  protected void isElementAttachedToHtml(WebElement element) {
-    try {
-      waitElement(element);
-    } catch (Exception ignored) {
-    }
-  }
-
   protected WebElement getElement(By locator) {
     WebElement element = DriverManager.getDriver().findElement(locator);
     return waitElement(element);
@@ -148,7 +141,7 @@ public class UtilsPage extends AbstractPageObject {
   protected void clickElementListByText(String text) {
     WebElement element =
         shadow.findElementByXPath("//ul[@id='list']/li[contains(text(), '" + text + "')]");
-    isClickable(element);
+    waitForElementToBeClickable(element);
     if (element.getText().equalsIgnoreCase(text)) {
       element.click();
     }
@@ -157,7 +150,7 @@ public class UtilsPage extends AbstractPageObject {
   protected void clickElementByTextList(List<WebElement> elements, String text) {
     for (WebElement element : elements) {
       if (text.equals(getTextFromLabel(element))) {
-        isClickable(element);
+        waitForElementToBeClickable(element);
         element.click();
         break;
       }
