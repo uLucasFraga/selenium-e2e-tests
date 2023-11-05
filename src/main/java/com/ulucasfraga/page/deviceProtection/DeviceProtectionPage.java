@@ -45,30 +45,30 @@ public class DeviceProtectionPage extends UtilsPage {
 
   @Step
   public void acceptCookiesDeviceProtection() {
-    waitElement(this.acceptCookiesButton);
+    waitForElementToBeVisible(this.acceptCookiesButton);
     isVisible(this.acceptCookiesButton);
     acceptCookies(this.acceptCookiesButton);
   }
 
   @Step
   public void confirmYourDevicePriceProtection(String devicePrice) {
-    isVisible(this.selectDevicePriceOptionProtectionPage);
+    waitForElementToBeVisible(this.selectDevicePriceOptionProtectionPage);
     click(this.selectDevicePriceOptionProtectionPage);
     selectDevicePriceProtection(devicePrice);
-    isClickable(this.selectButtonDeviceProtectionPage);
+    waitForElementToBeClickable(this.selectButtonDeviceProtectionPage);
   }
 
   @Step
   public void selectDevicePriceProtection(String devicePrice) {
-    isClickable(this.selectButtonDeviceProtectionPage);
+    waitForElementToBeClickable(this.selectButtonDeviceProtectionPage);
     clickElementListByText(devicePrice);
-    isClickable(this.selectButtonDeviceProtectionPage);
-    isVisible(this.selectButtonDeviceProtectionPage);
+    waitForElementToBeClickable(this.selectButtonDeviceProtectionPage);
+    waitForElementToBeVisible(this.selectButtonDeviceProtectionPage);
   }
 
   @Step
   public void selectDeviceProtectionButton() {
-    waitElement(this.selectButtonDeviceProtectionPage);
+    waitForElementToBeVisible(this.selectButtonDeviceProtectionPage);
     isVisible(this.selectButtonDeviceProtectionPage);
     click(this.selectButtonDeviceProtectionPage);
     isUrlContainsValue("/checkout");
@@ -76,28 +76,28 @@ public class DeviceProtectionPage extends UtilsPage {
 
   @Step
   public String getDevicePriceProtection() {
-    waitElement(this.selectDevicePriceOptionProtectionPage);
+    waitForElementToBeVisible(this.selectDevicePriceOptionProtectionPage);
     isVisible(this.selectDevicePriceOptionProtectionPage);
     return getTextFromLabel(this.selectDevicePriceOptionProtectionPage);
   }
 
   @Step
   public String getDevicePlanPriceProtectionPage() {
-    waitElement(this.devicePlanPriceProtectionPage);
-    isVisible(this.devicePlanPriceProtectionPage);
+    waitForElementToBeVisible(this.devicePlanPriceProtectionPage);
+    waitForElementToBeClickable(this.devicePlanPriceProtectionPage);
     return getTextFromLabel(this.devicePlanPriceProtectionPage);
   }
 
   @Step
   public String getProductNameDeviceProtection() {
-    waitElement(this.productNameDeviceProtectionPage);
+    waitForElementToBeVisible(this.productNameDeviceProtectionPage);
     isVisible(this.productNameDeviceProtectionPage);
     return getTextFromLabel(this.productNameDeviceProtectionPage);
   }
 
   @Step
   public Boolean checkContentAndURLDeviceProtection() {
-    waitElement(this.productSummaryDeviceProtectionPage);
+    waitForElementToBeVisible(this.productSummaryDeviceProtectionPage);
     isVisible(this.productSummaryDeviceProtectionPage);
     return isUrlContainsValue("/device-protection/checkout/payment");
   }

@@ -31,26 +31,25 @@ public class CheckoutPage extends UtilsPage {
 
   @Step
   public String getProductNameCheckout() {
-    waitElement(this.productNameCheckoutPage);
-    isClickable(this.productNameCheckoutPage);
+    waitForElementToBeVisible(this.productNameCheckoutPage);
     return getTextFromLabel(this.productNameCheckoutPage);
   }
 
   @Step
   public String getProviderNameCheckout() {
-    waitElement(this.providerNameCheckoutPage);
+    waitForElementToBeVisible(this.providerNameCheckoutPage);
     return getTextFromLabel(this.providerNameCheckoutPage);
   }
 
   @Step
   public String getSubscriptionStartDateCheckout() {
-    waitElement(this.subscriptionStartDateCheckoutPage);
+    waitForElementToBeVisible(this.subscriptionStartDateCheckoutPage);
     return getTextFromLabel(this.subscriptionStartDateCheckoutPage);
   }
 
   @Step
   public String getSubscriptionRenewalCheckout() {
-    waitElement(this.subscriptionRenewalCheckoutPage);
+    waitForElementToBeVisible(this.subscriptionRenewalCheckoutPage);
     return getTextFromLabel(this.subscriptionRenewalCheckoutPage);
   }
 }

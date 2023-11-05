@@ -27,18 +27,19 @@ public class CommonPage extends UtilsPage {
 
   @Step
   public String getFinalPrice() {
-    waitElement(this.finalPrice);
+    waitForElementToBeVisible(this.finalPrice);
     return getTextFromLabel(this.finalPrice);
   }
 
   @Step
   public String getInvalidMessage() {
-    waitElement(this.invalidAlertMessage);
+    waitForElementToBeVisible(this.invalidAlertMessage);
     return getTextFromLabel(this.invalidAlertMessage);
   }
 
   @Step
   public String getAlertMessage() {
+    waitForElementToBeVisible(unableAlertMessage);
     isVisible(this.unableAlertMessage);
     return getTextFromLabel(this.unableAlertMessage);
   }

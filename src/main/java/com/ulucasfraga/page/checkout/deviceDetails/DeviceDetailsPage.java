@@ -43,49 +43,49 @@ public class DeviceDetailsPage extends UtilsPage {
 
   @Step
   public void fillImeiDeviceDetails(String text) {
-    waitElement(this.inputImeiDetailsPage);
+    waitForElementToBeVisible(this.inputImeiDetailsPage);
     fillInput(this.inputImeiDetailsPage, text);
   }
 
   @Step
   public void selectYesOptionDamageDeviceDetails() {
-    waitElement(this.yesDamageOptionDetailsPage);
+    waitForElementToBeVisible(this.yesDamageOptionDetailsPage);
     click(this.yesDamageOptionDetailsPage);
   }
 
   @Step
   public void selectNoOptionDamageDeviceDetails() {
-    waitElement(this.noDamageOptionDetailsPage);
+    waitForElementToBeVisible(this.noDamageOptionDetailsPage);
     click(this.noDamageOptionDetailsPage);
   }
 
   @Step
   public void selectYesOptionLessDaysDeviceDetails() {
-    waitElement(this.yesLessDaysOptionDetailsPage);
+    waitForElementToBeVisible(this.yesLessDaysOptionDetailsPage);
     click(this.yesLessDaysOptionDetailsPage);
   }
 
   @Step
   public void selectNoOptionLessDaysDeviceDetails() {
-    waitElement(this.noLessDaysOptionDetailsPage);
+    waitForElementToBeVisible(this.noLessDaysOptionDetailsPage);
     click(this.noLessDaysOptionDetailsPage);
   }
 
   @Step
   public void selectYesOptionLessMonthsDeviceDetails() {
-    waitElement(this.yesLessMonthsOptionDetailsPage);
+    waitForElementToBeVisible(this.yesLessMonthsOptionDetailsPage);
     click(this.yesLessMonthsOptionDetailsPage);
   }
 
   @Step
   public void selectNoOptionLessMonthsDeviceDetails() {
-    waitElement(this.noLessMonthsOptionDetailsPage);
+    waitForElementToBeVisible(this.noLessMonthsOptionDetailsPage);
     click(this.noLessMonthsOptionDetailsPage);
   }
 
   @Step
   public Boolean checkIconDoneDetails() {
-    waitElement(this.iconDoneDetailsPage);
+    waitForElementToBeVisible(this.iconDoneDetailsPage);
     return isVisible(this.iconDoneDetailsPage);
   }
 }

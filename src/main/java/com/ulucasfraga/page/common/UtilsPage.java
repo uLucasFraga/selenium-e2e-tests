@@ -27,16 +27,25 @@ public class UtilsPage extends AbstractPageObject {
   }
 
   protected void acceptCookies(WebElement element) {
+    waitForElementToBeVisible(element);
     waitForElementToBeClickable(element);
     click(element);
   }
 
-  protected WebElement waitForElementToBeClickable(WebElement element) {
-    return new FluentWait<>(DriverManager.getDriver())
+  protected void waitForElementToBeClickable(WebElement element) {
+    new FluentWait<>(DriverManager.getDriver())
         .withTimeout(Duration.ofSeconds(DEFAULT_TIME_WAIT))
-        .pollingEvery(Duration.ofMillis(500))
+        .pollingEvery(Duration.ofMillis(1000))
         .ignoring(NoSuchElementException.class)
         .until(ExpectedConditions.elementToBeClickable(element));
+  }
+
+  protected void waitForElementToBeVisible(WebElement element) {
+    new FluentWait<>(DriverManager.getDriver())
+        .withTimeout(Duration.ofSeconds(DEFAULT_TIME_WAIT))
+        .pollingEvery(Duration.ofMillis(1000))
+        .ignoring(NoSuchElementException.class)
+        .until(ExpectedConditions.visibilityOf(element));
   }
 
   protected WebElement waitElement(WebElement element) {
