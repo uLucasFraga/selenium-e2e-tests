@@ -6,9 +6,11 @@ import io.github.sukgu.Shadow;
 import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UtilsPage extends AbstractPageObject {
@@ -25,7 +27,16 @@ public class UtilsPage extends AbstractPageObject {
   }
 
   protected void acceptCookies(WebElement element) {
+    waitForElementToBeClickable(element);
     click(element);
+  }
+
+  protected WebElement waitForElementToBeClickable(WebElement element) {
+    return new FluentWait<>(DriverManager.getDriver())
+        .withTimeout(Duration.ofSeconds(DEFAULT_TIME_WAIT))
+        .pollingEvery(Duration.ofMillis(500))
+        .ignoring(NoSuchElementException.class)
+        .until(ExpectedConditions.elementToBeClickable(element));
   }
 
   protected WebElement waitElement(WebElement element) {
@@ -145,6 +156,7 @@ public class UtilsPage extends AbstractPageObject {
   }
 
   protected void click(WebElement element) {
+    waitForElementToBeClickable(element);
     isClickable(element);
     element.click();
   }
