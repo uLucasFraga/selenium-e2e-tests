@@ -1,35 +1,48 @@
-node {
-    def mvnHome
+pipeline {
+    agent any
 
-    stage('Preparation') {
-        git 'https://github.com/ulucasfraga/selenium-e2e/tests.git'
-        mvnHome = tool 'M3'
+    environment {
+        MVN_HOME = tool 'M3'
     }
 
-    stage('Build') {
-        sh "'${mvnHome}/bin/mvn' clean package -DskipTests=true"
-    }
+    stages {
+        stage('Preparation') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'token', variable: 'GIT_TOKEN')]) {
+                        git url: "https://github.com/ulucasfraga/selenium-e2e/tests.git", credentialsId: 'token'
+                    }
+                }
+            }
+        }
 
-    stage('Test Execution') {
-        try {
-            sh "'${mvnHome}/bin/mvn' test -Pweb-execution -Dsuite=local -Dtarget=local -Dheadless=true -Dbrowser=chrome
-        } catch (Exception e) {
-            currentBuild.result = 'FAILURE'
-        } finally {
-            junit '**/target/surefire-reports/TEST-*.xml'
+        stage('Build') {
+            steps {
+                bat "\"%MVN_HOME%\\bin\\mvn\" clean package -DskipTests=true"
+            }
+        }
 
-            /*
-             * Please read https://wiki.jenkins.io/display/JENKINS/Configuring+Content+Security+Policy
-             * to allow Jenkins to load static files
-             */
-            publishHTML (target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'target/surefire-reports',
-                reportFiles: 'index.html',
-                reportName: "TestNG Report"
-            ])
+        stage('Test Execution') {
+            steps {
+                script {
+                    try {
+                        bat "\"%MVN_HOME%\\bin\\mvn\" test -Pweb-execution -Dsuite=local -Dtarget=local -Dheadless=true -Dbrowser=chrome"
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                    } finally {
+                        junit '**/target/surefire-reports/TEST-*.xml'
+
+                        publishHTML(target: [
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: true,
+                            keepAll: true,
+                            reportDir: 'target/surefire-reports',
+                            reportFiles: 'index.html',
+                            reportName: 'TestNG Report'
+                        ])
+                    }
+                }
+            }
         }
     }
 }

@@ -51,5 +51,6 @@ public class TestListener implements ITestListener {
     logger.error(iTestResult.getThrowable());
 
     AllureManager.takeScreenshotToAttachOnAllureReport();
+    AllureManager.addBrowserInformationOnAllureReport();
   }
 }

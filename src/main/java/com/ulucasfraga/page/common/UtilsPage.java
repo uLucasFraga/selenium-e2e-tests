@@ -25,6 +25,7 @@ public class UtilsPage extends AbstractPageObject {
   }
 
   protected void acceptCookies(WebElement element) {
+    isElementAttachedToHtml(element);
     isClickable(element);
     click(element);
   }
