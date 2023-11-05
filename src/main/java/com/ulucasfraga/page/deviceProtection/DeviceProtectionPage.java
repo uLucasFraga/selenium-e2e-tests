@@ -51,7 +51,7 @@ public class DeviceProtectionPage extends UtilsPage {
 
   @Step
   public void confirmYourDevicePriceProtection() {
-    isElementAttachedToHtml(this.bannerTitleDeviceProtectionPage);
+    isVisible(this.selectDevicePriceOptionProtectionPage);
     click(this.selectDevicePriceOptionProtectionPage);
     isClickable(this.selectButtonDeviceProtectionPage);
   }
@@ -65,35 +65,35 @@ public class DeviceProtectionPage extends UtilsPage {
   @Step
   public void selectDeviceProtectionButton() {
     waitElement(this.selectButtonDeviceProtectionPage);
-    isElementAttachedToHtml(this.selectButtonDeviceProtectionPage);
+    isVisible(this.selectButtonDeviceProtectionPage);
     click(this.selectButtonDeviceProtectionPage);
   }
 
   @Step
   public String getDevicePriceProtection() {
     waitElement(this.selectDevicePriceOptionProtectionPage);
-    isElementAttachedToHtml(this.devicePlanPriceCounterProtectionPage);
+    isVisible(this.selectDevicePriceOptionProtectionPage);
     return getTextFromLabel(this.selectDevicePriceOptionProtectionPage);
   }
 
   @Step
   public String getDevicePlanPriceProtectionPage() {
     waitElement(this.devicePlanPriceProtectionPage);
-    isElementAttachedToHtml(this.devicePlanPriceCounterProtectionPage);
+    isVisible(this.devicePlanPriceProtectionPage);
     return getTextFromLabel(this.devicePlanPriceProtectionPage);
   }
 
   @Step
   public String getProductNameDeviceProtection() {
     waitElement(this.productNameDeviceProtectionPage);
-    isElementAttachedToHtml(this.productNameDeviceProtectionPage);
+    isVisible(this.productNameDeviceProtectionPage);
     return getTextFromLabel(this.productNameDeviceProtectionPage);
   }
 
   @Step
   public Boolean checkContentAndURLDeviceProtection() {
     waitElement(this.productSummaryDeviceProtectionPage);
-    isElementAttachedToHtml(this.productSummaryDeviceProtectionPage);
+    isVisible(this.productSummaryDeviceProtectionPage);
     return isUrlContainsValue("/device-protection/checkout/payment");
   }
 
