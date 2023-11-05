@@ -17,7 +17,6 @@ For more information, see the documentation: [SELENIUM](https://www.selenium.dev
 - [Prerequisites](#prerequisites)
 - [Configuration](#configuration)
 - [Installation](#installation)
-- [Features](#features)
 - [How to run the tests](#how-to-run-the-tests)
 - [Profile to executor](#profile-to-executor)
 - [Report](#report)
