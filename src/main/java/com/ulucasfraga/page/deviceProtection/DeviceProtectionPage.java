@@ -44,8 +44,13 @@ public class DeviceProtectionPage extends UtilsPage {
   private WebElement productNameDeviceProtectionPage;
 
   @Step
-  public void confirmYourDevicePriceProtection() {
+  public void acceptCookiesDeviceProtection() {
+    isElementAttachedToHtml(this.bannerTitleDeviceProtectionPage);
     acceptCookies(this.acceptCookiesButton);
+  }
+
+  @Step
+  public void confirmYourDevicePriceProtection() {
     isElementAttachedToHtml(this.bannerTitleDeviceProtectionPage);
     click(this.selectDevicePriceOptionProtectionPage);
     isClickable(this.selectButtonDeviceProtectionPage);

@@ -36,6 +36,7 @@ public class DeviceProtectionWebTest extends BaseWeb {
 
   @Test(description = "Device Protection - Random Device Price")
   public void randomDevicePriceDeviceProtection() {
+    deviceProtectionPage.acceptCookiesDeviceProtection();
     deviceProtectionPage.confirmYourDevicePriceProtection();
     deviceProtectionPage.selectDevicePriceProtection(deviceProtectionData.deviceProtectionPrice());
     assertThat(deviceProtectionPage.getDevicePriceProtection())
@@ -47,6 +48,7 @@ public class DeviceProtectionWebTest extends BaseWeb {
 
   @Test(description = "Device Protection - The Same Device Price")
   public void sameDevicePriceDeviceProtection() {
+    deviceProtectionPage.acceptCookiesDeviceProtection();
     deviceProtectionPage.confirmYourDevicePriceProtection();
     deviceProtectionPage.selectDevicePriceProtection("THB 10,001 - 15,000");
     assertThat(deviceProtectionPage.getDevicePriceProtection()).isEqualTo("THB 10,001 - 15,000");
@@ -57,6 +59,7 @@ public class DeviceProtectionWebTest extends BaseWeb {
 
   @Test(description = "Device Protection - Analyze Content And URL")
   public void analyzeContentAndURLDeviceProtection() {
+    deviceProtectionPage.acceptCookiesDeviceProtection();
     deviceProtectionPage.confirmYourDevicePriceProtection();
     deviceProtectionPage.selectDevicePriceProtection(deviceProtectionData.deviceProtectionPrice());
     deviceProtectionPage.selectDeviceProtectionButton();
@@ -67,6 +70,7 @@ public class DeviceProtectionWebTest extends BaseWeb {
 
   @Test(description = "Checkout Protection - Analyze Checkout Page")
   public void analyzeCheckoutProtection() {
+    deviceProtectionPage.acceptCookiesDeviceProtection();
     deviceProtectionPage.confirmYourDevicePriceProtection();
     deviceProtectionPage.selectDevicePriceProtection(deviceProtectionData.deviceProtectionPrice());
     String valuePlanDeviceHome = deviceProtectionPage.getDevicePlanPriceProtectionPage();
@@ -83,6 +87,7 @@ public class DeviceProtectionWebTest extends BaseWeb {
 
   @Test(description = "Checkout - Device Details - Add Valid IMEI And All Answers As YES")
   public void addValidIMEIAndAllAnswersAsYESDeviceDetails() {
+    deviceProtectionPage.acceptCookiesDeviceProtection();
     deviceProtectionPage.confirmYourDevicePriceProtection();
     deviceProtectionPage.selectDevicePriceProtection(deviceProtectionData.deviceProtectionPrice());
     deviceProtectionPage.selectDeviceProtectionButton();
@@ -94,6 +99,7 @@ public class DeviceProtectionWebTest extends BaseWeb {
 
   @Test(description = "Checkout - Device Details - Purchased on or after October 22, 2023")
   public void addValidIMEIAndPurchasedAfterDataValidDeviceDetails() {
+    deviceProtectionPage.acceptCookiesDeviceProtection();
     deviceProtectionPage.confirmYourDevicePriceProtection();
     deviceProtectionPage.selectDevicePriceProtection(deviceProtectionData.deviceProtectionPrice());
     deviceProtectionPage.selectDeviceProtectionButton();
@@ -108,6 +114,7 @@ public class DeviceProtectionWebTest extends BaseWeb {
   public void addValidIMEIAndErrorDevicesOlderMinimumMonthsDeviceDetails() {
     String alert = AlertMessages.ALERT_DEVICE_MORE_MONTHS.get();
 
+    deviceProtectionPage.acceptCookiesDeviceProtection();
     deviceProtectionPage.confirmYourDevicePriceProtection();
     deviceProtectionPage.selectDevicePriceProtection(deviceProtectionData.deviceProtectionPrice());
     deviceProtectionPage.selectDeviceProtectionButton();
@@ -122,6 +129,7 @@ public class DeviceProtectionWebTest extends BaseWeb {
   public void addValidIMEIAndErrorDevicesDamagesDeviceDetails() {
     String alertDevice = AlertMessages.ALERT_DEVICE_DAMAGE.get();
 
+    deviceProtectionPage.acceptCookiesDeviceProtection();
     deviceProtectionPage.confirmYourDevicePriceProtection();
     deviceProtectionPage.selectDevicePriceProtection(deviceProtectionData.deviceProtectionPrice());
     deviceProtectionPage.selectDeviceProtectionButton();
@@ -136,6 +144,7 @@ public class DeviceProtectionWebTest extends BaseWeb {
     String alertIMEI = AlertMessages.ALERT_INVALID_IMEI.get();
     String alertDevice = AlertMessages.ALERT_DEVICE_MORE_MONTHS.get();
 
+    deviceProtectionPage.acceptCookiesDeviceProtection();
     deviceProtectionPage.confirmYourDevicePriceProtection();
     deviceProtectionPage.selectDevicePriceProtection(deviceProtectionData.deviceProtectionPrice());
     deviceProtectionPage.selectDeviceProtectionButton();
