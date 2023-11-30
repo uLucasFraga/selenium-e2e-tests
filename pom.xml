@@ -40,7 +40,7 @@
 
         <!-- security libraries override -->
         <jackson-databind.version>2.15.3</jackson-databind.version>
-        <commons-io.version>2.15.0</commons-io.version>
+        <commons-io.version>2.15.1</commons-io.version>
 
         <suite>local</suite>
     </properties>
